@@ -1,4 +1,4 @@
-# es-lint-rule-package
+# luftborn-rxjs-takeuntill-destroy
 
 An ESLint plugin that enforces the use of `takeUntilDestroyed` operator in RxJS subscription pipes to prevent memory leaks in Angular applications.
 
@@ -9,13 +9,15 @@ This ESLint rule helps prevent memory leaks in Angular applications by ensuring 
 ## Installation
 
 ```bash
-npm install es-lint-rule-package --save-dev
+npm install luftborn-rxjs-takeuntill-destroy --save-dev
 ```
 
 ## Requirements
 
 - ESLint 6.0.0 or higher (compatible with ESLint 9+)
 - Node.js 14.0.0 or higher
+- Angular 16.0.0 or higher (for @angular/core/rxjs-interop)
+- RxJS 7.0.0 or higher
 
 ## Usage
 
@@ -25,9 +27,9 @@ Add the plugin to your ESLint configuration:
 
 ```js
 module.exports = {
-  plugins: ['es-lint-rule-package'],
+  plugins: ['luftborn-rxjs-takeuntill-destroy'],
   rules: {
-    'es-lint-rule-package/require-take-until-destroyed': 'error'
+    'luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed': 'error'
   }
 };
 ```
@@ -35,15 +37,15 @@ module.exports = {
 ### ESLint Flat Config (eslint.config.js)
 
 ```js
-const eslintRulePackage = require('es-lint-rule-package');
+const luftbornRxjsTakeuntillDestroy = require('luftborn-rxjs-takeuntill-destroy');
 
 module.exports = [
   {
     plugins: {
-      'es-lint-rule-package': eslintRulePackage
+      'luftborn-rxjs-takeuntill-destroy': luftbornRxjsTakeuntillDestroy
     },
     rules: {
-      'es-lint-rule-package/require-take-until-destroyed': 'error'
+      'luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed': 'error'
     }
   }
 ];
@@ -123,4 +125,14 @@ The rule also recognizes renamed imports and variables that might contain the `t
 ## License
 
 MIT © Luftborn
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository https://github.com/Arigatouz/luftborn-rxjs-takeuntill-destroy
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
