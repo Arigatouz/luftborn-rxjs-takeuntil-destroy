@@ -1,10 +1,10 @@
 # luftborn-rxjs-takeuntill-destroy
 
-An ESLint plugin that enforces the use of `takeUntilDestroyed` operator in RxJS subscription pipes to prevent memory leaks in Angular applications.
+An ESLint plugin that enforces the use of `takeUntilDestroyed` or other take operators in RxJS subscription pipes to prevent memory leaks in Angular applications.
 
 ## Description
 
-This ESLint rule helps prevent memory leaks in Angular applications by ensuring that all Observable subscriptions use the `takeUntilDestroyed` operator from `@angular/core/rxjs-interop`. This operator automatically unsubscribes from Observables when the component or service is destroyed, preventing memory leaks.
+This ESLint rule helps prevent memory leaks in Angular applications by ensuring that all Observable subscriptions use either the `takeUntilDestroyed` operator from `@angular/core/rxjs-interop` or one of the RxJS take operators (`takeUntil`, `takeWhile`, `take`, `takeLast`). These operators ensure that subscriptions are properly terminated, preventing memory leaks.
 
 ## Installation
 
@@ -53,7 +53,7 @@ module.exports = [
 
 ## Rule Details
 
-The `require-take-until-destroyed` rule enforces that all Observable subscriptions use the `takeUntilDestroyed` operator to automatically unsubscribe when the component or service is destroyed.
+The `require-take-until-destroyed` rule enforces that all Observable subscriptions use either the `takeUntilDestroyed` operator or one of the RxJS take operators (`takeUntil`, `takeWhile`, `take`, `takeLast`) to ensure subscriptions are properly terminated, preventing memory leaks.
 
 ### Examples
 
@@ -106,6 +106,50 @@ this.observable.pipe(
 ).subscribe(result => {
   console.log(result);
 });
+
+// Using takeUntil from RxJS
+import { takeUntil } from 'rxjs';
+
+destroy$ = new Subject<void>();
+
+this.observable.pipe(
+  map(data => data),
+  takeUntil(this.destroy$)
+).subscribe(result => {
+  console.log(result);
+});
+
+// Using takeWhile from RxJS
+import { takeWhile } from 'rxjs';
+
+alive = true;
+
+this.observable.pipe(
+  map(data => data),
+  takeWhile(() => this.alive)
+).subscribe(result => {
+  console.log(result);
+});
+
+// Using take from RxJS
+import { take } from 'rxjs';
+
+this.observable.pipe(
+  map(data => data),
+  take(1)
+).subscribe(result => {
+  console.log(result);
+});
+
+// Using takeLast from RxJS
+import { takeLast } from 'rxjs';
+
+this.observable.pipe(
+  map(data => data),
+  takeLast(1)
+).subscribe(result => {
+  console.log(result);
+});
 ```
 
 ## Rule Options
@@ -117,10 +161,14 @@ This rule has no options.
 The rule checks for:
 
 1. Observable subscriptions without a pipe call
-2. Observable subscriptions with a pipe call but missing the `takeUntilDestroyed` operator
+2. Observable subscriptions with a pipe call but missing any of the supported take operators
 3. Proper import and usage of the `takeUntilDestroyed` operator from `@angular/core/rxjs-interop`
+4. Proper import and usage of RxJS take operators (`takeUntil`, `takeWhile`, `take`, `takeLast`) from 'rxjs'
 
-The rule also recognizes renamed imports and variables that might contain the `takeUntilDestroyed` operator.
+The rule recognizes:
+- Renamed imports for all supported operators
+- Variables that might contain any of the supported operators
+- Various patterns for subscription cleanup
 
 ## License
 
@@ -135,4 +183,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
