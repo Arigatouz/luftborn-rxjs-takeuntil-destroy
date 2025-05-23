@@ -16,7 +16,7 @@
   ],
   "author": "Luftborn",
   "license": "MIT",
-  "description": "This package for new custom es-lint rules",
+  "description": "ESLint plugin that enforces the use of takeUntilDestroyed operator in RxJS subscription pipes to prevent memory leaks in Angular applications",
   "devDependencies": {
     "@typescript-eslint/parser": "^8.32.1",
     "eslint": "^9.27.0",
