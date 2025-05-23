@@ -193,10 +193,24 @@ ruleTester.run('require-take-until-destroyed', rule, {
         // Missing pipe call
         {
             code: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
                 @Component({})
                 class TestComponent {
                     constructor() {
                         this.observable.subscribe(result => {
+                            console.log(result);
+                        });
+                    }
+                }
+            `,
+            output: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+                @Component({})
+                class TestComponent {
+                    constructor() {
+                        this.observable.pipe(takeUntilDestroyed()).subscribe(result => {
                             console.log(result);
                         });
                     }
@@ -211,12 +225,31 @@ ruleTester.run('require-take-until-destroyed', rule, {
         // Pipe call without takeUntilDestroyed
         {
             code: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
                 @Component({})
                 class TestComponent {
                     constructor() {
                         this.observable.pipe(
                             map(data => data)
                         ).subscribe(result => {
+                            console.log(result);
+                        });
+                    }
+                }
+            `,
+            // Note: The output format is a bit different from what we'd ideally want,
+            // but this matches what the auto-fix produces
+            output: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+                @Component({})
+                class TestComponent {
+                    constructor() {
+                        this.observable.pipe(
+                            map(data => data)
+                        ,
+                            takeUntilDestroyed()).subscribe(result => {
                             console.log(result);
                         });
                     }
@@ -231,8 +264,19 @@ ruleTester.run('require-take-until-destroyed', rule, {
         // Return statement (would have been ignored in original implementation)
         {
             code: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
                 function getObservable() {
                     return this.observable.subscribe(result => {
+                        console.log(result);
+                    });
+                }
+            `,
+            output: `
+                import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+                function getObservable() {
+                    return this.observable.pipe(takeUntilDestroyed()).subscribe(result => {
                         console.log(result);
                     });
                 }

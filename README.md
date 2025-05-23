@@ -55,6 +55,8 @@ module.exports = [
 
 The `require-take-until-destroyed` rule enforces that all Observable subscriptions use either the `takeUntilDestroyed` operator or one of the RxJS take operators (`takeUntil`, `takeWhile`, `take`, `takeLast`) to ensure subscriptions are properly terminated, preventing memory leaks.
 
+This rule is auto-fixable. When you run ESLint with the `--fix` option, it will automatically add `takeUntilDestroyed()` to your subscription pipes where needed.
+
 ### Examples
 
 #### ❌ Incorrect
@@ -155,6 +157,15 @@ this.observable.pipe(
 ## Rule Options
 
 This rule has no options.
+
+### Auto-fix Behavior
+
+When auto-fix is applied:
+
+1. For subscriptions without a pipe call, it adds a pipe with `takeUntilDestroyed()` before the subscribe call.
+2. For subscriptions with a pipe call but missing a take operator, it adds `takeUntilDestroyed()` as the last operator in the pipe.
+
+Note: The auto-fix assumes that `takeUntilDestroyed` is imported from `@angular/core/rxjs-interop`. If it's not imported, you'll need to add the import manually.
 
 ## Implementation Details
 
