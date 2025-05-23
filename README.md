@@ -23,15 +23,15 @@ npm install luftborn-rxjs-takeuntill-destroy --save-dev
 
 Add the plugin to your ESLint configuration:
 
-### ESLint Config (eslintrc.js)
+### ESLint Config (eslintrc.js / eslintrc.json)
 
-```js
-module.exports = {
-  plugins: ['luftborn-rxjs-takeuntill-destroy'],
-  rules: {
-    'luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed': 'error'
+```json
+{
+  "plugins": ["luftborn-rxjs-takeuntill-destroy"],
+  "rules": {
+    "luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed": "error"
   }
-};
+}
 ```
 
 ### ESLint Flat Config (eslint.config.js)
@@ -131,7 +131,7 @@ MIT © Luftborn
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository https://github.com/Arigatouz/luftborn-rxjs-takeuntill-destroy
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+2. Create your feature branch (`git switch -c feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
