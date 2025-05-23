@@ -1,0 +1,7 @@
+tests/
+coverage/
+.github/
+jest.config.js
+.gitignore
+.eslintrc
+*.log

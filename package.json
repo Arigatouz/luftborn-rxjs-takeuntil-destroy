@@ -1,0 +1,31 @@
+{
+  "name": "es-lint-rule-package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "private": false,
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "rxjs",
+    "angular",
+    "subscription"
+  ],
+  "author": "Luftborn",
+  "license": "MIT",
+  "description": "This package for new custom es-lint rules",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
+    "jest": "^29.7.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=6.0.0 <10.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
