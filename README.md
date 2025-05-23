@@ -1,4 +1,4 @@
-# luftborn-rxjs-takeuntill-destroy
+# luftborn-rxjs-takeuntil-destroy
 
 An ESLint plugin that enforces the use of `takeUntilDestroyed` or other take operators in RxJS subscription pipes to prevent memory leaks in Angular applications.
 
@@ -9,7 +9,7 @@ This ESLint rule helps prevent memory leaks in Angular applications by ensuring 
 ## Installation
 
 ```bash
-npm install luftborn-rxjs-takeuntill-destroy --save-dev
+npm install luftborn-rxjs-takeuntil-destroy --save-dev
 ```
 
 ## Requirements
@@ -27,9 +27,9 @@ Add the plugin to your ESLint configuration:
 
 ```json
 {
-  "plugins": ["luftborn-rxjs-takeuntill-destroy"],
+  "plugins": ["luftborn-rxjs-takeuntil-destroy"],
   "rules": {
-    "luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed": "error"
+    "luftborn-rxjs-takeuntil-destroy/require-take-until-destroyed": "error"
   }
 }
 ```
@@ -37,15 +37,15 @@ Add the plugin to your ESLint configuration:
 ### ESLint Flat Config (eslint.config.js)
 
 ```js
-const luftbornRxjsTakeuntillDestroy = require('luftborn-rxjs-takeuntill-destroy');
+const luftbornRxjsTakeuntillDestroy = require('luftborn-rxjs-takeuntil-destroy');
 
 module.exports = [
   {
     plugins: {
-      'luftborn-rxjs-takeuntill-destroy': luftbornRxjsTakeuntillDestroy
+      'luftborn-rxjs-takeuntil-destroy': luftbornRxjsTakeuntillDestroy
     },
     rules: {
-      'luftborn-rxjs-takeuntill-destroy/require-take-until-destroyed': 'error'
+      'luftborn-rxjs-takeuntil-destroy/require-take-until-destroyed': 'error'
     }
   }
 ];
@@ -189,7 +189,7 @@ MIT © Luftborn
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the repository https://github.com/Arigatouz/luftborn-rxjs-takeuntill-destroy
+1. Fork the repository https://github.com/Arigatouz/luftborn-rxjs-takeuntil-destroy
 2. Create your feature branch (`git switch -c feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)

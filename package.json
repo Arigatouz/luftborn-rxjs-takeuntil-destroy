@@ -1,5 +1,5 @@
 {
-  "name": "luftborn-rxjs-takeuntill-destroy",
+  "name": "luftborn-rxjs-takeuntil-destroy",
   "version": "1.0.5",
   "main": "index.js",
   "scripts": {
