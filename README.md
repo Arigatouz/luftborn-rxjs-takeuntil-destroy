@@ -37,12 +37,12 @@ Add the plugin to your ESLint configuration:
 ### ESLint Flat Config (eslint.config.js)
 
 ```js
-const luftbornRxjsTakeuntillDestroy = require('luftborn-rxjs-takeuntil-destroy');
+const luftbornRxjsTakeuntilDestroy = require('luftborn-rxjs-takeuntil-destroy');
 
 module.exports = [
   {
     plugins: {
-      'luftborn-rxjs-takeuntil-destroy': luftbornRxjsTakeuntillDestroy
+      'luftborn-rxjs-takeuntil-destroy': luftbornRxjsTakeuntilDestroy
     },
     rules: {
       'luftborn-rxjs-takeuntil-destroy/require-take-until-destroyed': 'error'
